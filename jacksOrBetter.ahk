@@ -1,156 +1,132 @@
 #Requires AutoHotkey v1.1.37.02
 #include <FindText>
 
+; Global variables
 cardBacks:="|<>*189$81.X6CQMtlX7CAQsoMlnX7CAMtlXb6MslXb6AQMlnX6/bCAQslXX6CQMlQtlXb6AQslnX6/36AMMlV36AAMlX6CQMtlX7CAQsoMlnX7CAMtlXb6X6CQMtlX7CAQsnb6AQslXX6CQMlQtlXb6AQMlnX6/bCAQslXb6CQMlMMlXb6AQMlnX6AMlnX7CAMtlXb6X6CQMtlX7CAQsoMlnX7CAMtlXb6MslXb6AQMlnX6/bCAQslXb6CQMlQslXb6AQMlnX6/36AMMlXX6AAMlX6CQMtlX7CAQsoMlnX7CAMtlXb6X6CAMtlX7CAMsnb6AMslV36AAMlQtlXb6AQslnX6/bCAQslXb6CQMlQslX36A8MlVX6AMlnX7CAMtlXb6X6CQMtlX7CAQsoMlnX7CAMtlXb6MslXb6AQMlVX6/b6AQslXX6CQMlQtlXb6AQslnX6/76AQslXX6CQMlX6CQMtlX7CAQsoMlnX7CAMtlXb6X6CQMtlX7CAQsn7CAQslXX6AAMlQtlXb6AQMlnX6/bCAQslXX6CQMlQslXb6AQMlnX6AMlnX7CAMtlXb6X6CQMtlX7CAQsoMlnX7CAMtlXb6MMlXX600MlVX6/bCAQslXb6CQMlQtlXb6CQMlnX6/b6AQslfX6CQMlX6CQMtlX7CAQsoMlnX7CAMtlXb6X6CQMtln7CAQsl3648M1V06AMElQtlXb6AQMlnX6/bCAQslXb6CQMlMslXX6AQMlXX6AMlnX6CAMtlXb6X6CQMtlX7CAQsoMlnX7CAMtlXb6QMlX36AAMlVX6/bCAQslXb6CQMlQtlXb6AQslnX6/76AQslXX6CQMlX6CQMtlX7CAQsoMlnX7CAMtlXb6X6CQMtlX7CAQsn36AMMlX36AQMlQslXb6AQslnX6/bCAQslXb6CQMlMslXb6AQMlnX6AMlnX6CAMtlXb6X6CQMtlX7CAQsoMlnX7CAMtlXb6X2448E00648OkXbCAQslXb6CQMlQtlXb6AQslnX6/b6AQslXX6CQMlX6CQMtlX7CAMsoMlnX7CAMtlXb6X6CQMtlX7CAQsl/G4U000001+GYQslXb6AQMlnX6A"
 holdBanner:="|<>*135$71.Dw3z0zUDw7y0Ts7y1z0TsDw0zkDw7y0zkTs1zUTsDw1zUzk3z0zkTs3z1zU7y1zUzk7y3z0Dw3z1zUDw7y0Ts7y3z0TsDw0zkDw7y0zkTs1zUTsDw1zUzk3zDzkTs3z1zU7zzzUzk7y3z0Dzzz1zUDw7y0Tzzy3z0TsDw0zzzw7y0zkTs1zzzsDw1zUzk3z0zkTs3z1zU7y1zUzk7y3z0Dw3z1zUDw7y0Ts7y3z0TsDw0zkDw7y0zkTs1zUTsDw1z0zk3z0zkDs3y1zzby1zUTsDw3zzDw3z0zszs7zz"
 handWinBanner:="|<>*107$25.zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzs000000000000zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzk1Mzs000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000031XDzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzU000000000003zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzw"
-holdCardsBanner:="|<>*153$121.zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzXzzzzzzzzzzzzzzzzzzzUzzzzzzzzzzzzzzzzzzzkTzzz3zzzzzzzzzzzzzzsDzzzVzzzzzzzzzzzzzzw7zzzkzzzzzzzzzzzzzzy3zzzsTzzzzzzzzzzzzzz1zzzwDzs7ssTzkDs7sls0y3zw1zs1w07zk1s1s0k0Q0zw0Tw0S03zk0s0Q0M0C0Dy0DwC71VzsQ8AC08A677zkzy73VkzwC4C71wC33XzsSz3VksTy7273Uy71VvzwDTVksQDz3VzVkT3UkTzy7jksQC7zVzzksDVkQ7zz3rsQC73zkzzUQ7ksD1zzVvwC73VzsTz0C3sQ7kTzkxy73VkzwDz071wC3w7zsSz3VksTy7z33Uy71z1zwDTVksQDz3X3VkT3Uzkzy7jksQC7zVkVksDVkTwDz3rsQC73zksEsQ7ksAC7zVvwC73VzsQ8QC3sQ673zkzy07Vkzw0A071y03U3zs7zU3ksTz0703Uz01k1zy1zs3sQDzk7kFszk1w1zz0zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
-gameOverBanner:="|<>*154$101.zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzwTzzzzzzzzzzzzzzzU7zzzzzzzzzzzzzzw07zzzzzzzzzzzzzzs07zzzzzzzzzzzzzzUwDzzzzzzzzzzzzzz3wDzzzzzzzzzzzzzy7sTzzzzzzzzzzzzzwDkzzzzzzzzzzzzzzkTVw3wkQDs7zz0yTTUzjk3k00DU7zw0sSz1zz03U00C07zk0kty3zwC73ksQADz3VVnw7zsQC7XkswTy73XbsDzksQD7VVsTwC73DkQ1zksSD33kzsQC6TUs3zVkwS67VzksQAzVw7s3VswA03zVksNz3wDU73lsM0Dz3Vs3y7sS0C7Xkkzzy73k7sDksMQD7VVzzwC7UDsTVVksSD33lzsQD0Tkz33VkwS67VzksS0zVy673VswAD3zVky1z1sAA73lsQADz3Vw3z00M0C7Xks0Tz03s7z00s0QD7Vs1zy0DkTz0ls8sSDXs7zy0zUzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzk"
+;holdCardsBanner:="|<>*153$121.zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzXzzzzzzzzzzzzzzzzzzzUzzzzzzzzzzzzzzzzzzzkTzzz3zzzzzzzzzzzzzzsDzzzVzzzzzzzzzzzzzzw7zzzkzzzzzzzzzzzzzzy3zzzsTzzzzzzzzzzzzzz1zzzwDzs7ssTzkDs7sls0y3zw1zs1w07zk1s1s0k0Q0zw0Tw0S03zk0s0Q0M0C0Dy0DwC71VzsQ8AC08A677zkzy73VkzwC4C71wC33XzsSz3VksTy7273Uy71VvzwDTVksQDz3VzVkT3UkTzy7jksQC7zVzzksDVkQ7zz3rsQC73zkzzUQ7ksD1zzVvwC73VzsTz0C3sQ7kTzkxy73VkzwDz071wC3w7zsSz3VksTy7z33Uy71z1zwDTVksQDz3X3VkT3Uzkzy7jksQC7zVkVksDVkTwDz3rsQC73zksEsQ7ksAC7zVvwC73VzsQ8QC3sQ673zkzy07Vkzw0A071y03U3zs7zU3ksTz0703Uz01k1zy1zs3sQDzk7kFszk1w1zz0zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+holdCardsBanner:="|<>*156$201.zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzXzzzzzzzzyTzzzlzwTzzzzzzzzzzzzzzzsTzzzzzzzzVzzzwDzVzzzzzzzzzzzzzzzz1zzzyTzzzwDzzzUzwDzzzzzzzzzzzzzzzsDzzzVzzzzVzzzw7zVzzzzzzzzzzzzzzzz1zzzwDzzzwDzzzUzwDzzzzzzzzzzzzzzzsDzzzVzzzzVzzzw7zVzzzzzzzzzzzzzzzz1zzzwDzzzwDzzzUzwDzzzzzzzzzzzzzzzsDzzzVzzzzVzzzw7z1zzzk7kUzzUDU7U3U1s3zk1k3zw0Dk7Uw0Dzzw0S03zs0s0Q0M0C0Dy0A0DzU0w0Q701zzz13kETy6333U231kVzwDVVzw6733UsMDzzsQC73zksEsQ3ksACDzVwADzVksQA63Vzzz3VksTy7273Uy71VtzwD3lzwC77VUkwDzzsQC73zksMsQ7ksA7zzVsS7zVksQA67Vzzz3VksTy7zz3Uy71kTzwD3kzwC63VUkwDzzsQC73zkzzkQ7ksC1zzVsQ7zVkkQA67Vzzz3VksTy7zs3Uy71s7zwD3UzwC63VUkwDzzsQC73zkzw0Q7ksDkTzVsS7zVkkQA67Vzzz3VksTy7z33Uy71z1zwD3kzwC63VUkwDzzsQC73zkxsMQ7ksDwDzVsS7zVkkQA67Vzzz3VksTy7273Uy71zkzwD3kzwC73VUkwDzzsQC73zksEsQ7ksAS7zVsSDzVksQA67Vzzz3VksTy7273Uy71VkzwDVVzwC73XUkQDzzs8S73zkEk0Q7kMA4DzUw8DzVks8Q731zzzU3ksTz0703Uz01k1zw1U3zwC7U3Us0Dzzy0y73zw1s4A7w0D0TzkC0TzVkw0wDU1zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzw"
+gameOverBanner:="|<>*156$201.zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz0zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzU1zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzs07zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz1UTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzkT3zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzy7sTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzkz3zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzy7sTzzzjzzzzzzzzzzzzzzzzzzzzzzzzzzkz3k3sUEDk7zw0sS70D07zzzzzzzzzzzzy7zw0C000w0Tz03Xkk0s0zzzzzzzzzzzzzkzzVVkQC733zsMQC66707zzzzzzzzzzzzy7zwQC7VssQDz73Vllks7zzzzzzzzzzzzzkzzXVkwD33VzkwQAAD73zzzzzzzzzzzzzy7UQwD7VsMQDy71VVVssTzzzzzzzzzzzzzks3zVswD33VzksAAAC73zzzzzzzzzzzzzy7UTsC7VsM0Dy71lVU0sTzzzzzzzzzzzzzkz3w1kwD301zksC0Q073zzzzzzzzzzzzzy7wS0C7VsMTzy71k3UzsTzzzzzzzzzzzzzkzXUVkwD33zzksC0QDz3zzzzzzzzzzzzzy7sQAC7VsMTzy71k3VzsTzzzzzzzzzzzzzkz33VkwD33VzksD0QD73zzzzzzzzzzzzzy7sMQC7VsMQDy73s7VssTzzzzzzzzzzzzzsS31VkwD33VzsMT0y673zzzzzzzzzzzzzz1UQ0C7VsM8Tz33s7kUsTzzzzzzzzzzzzzw03U0kwD3U3zs0T0y073zzzzzzzzzzzzzzk4S077VsS0zzU7w7s1sTzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzw"
 dealButtonX:=1165
 dealButtonY:=689
+overlayUpdater:=0
 
-;pre first deal
-if (FindText(X, Y, 517-150000, 791-150000, 517+150000, 791+150000, 0, 0, cardBacks))
-{
-  MsgBox click to draw pre game
-  FindText().Click(dealButtonX, dealButtonY, "L")
+; Main game loop
+Loop {
+
+	;pre first deal
+	if (FindText(X, Y, 517-150000, 791-150000, 517+150000, 791+150000, 0, 0, cardBacks))
+	{
+		guiText:="Starting First Hand"
+		updateGui(guiText)
+		FindText().Click(dealButtonX, dealButtonY, "L")
+		Sleep 3000
+	}
+	;made hand no evaluation necessary
+	else if (FindText(X, Y, 11, 807, 1030, 946, 0, 0, holdBanner))
+	{
+		guiText:="Made Hand - Just draw"
+		updateGui(guiText)
+		MsgBox click to draw made hand
+		FindText().Click(dealButtonX, dealButtonY, "L")
+		Sleep 3000
+	}
+	;hand is over, we won
+	else if (ok:=FindText(X, Y, 558, 737, 688, 877, 0, 0, handWinBanner))
+	{
+		guiText:="Winner - starting next hand"
+		updateGui(guiText)
+		;MsgBox click to draw after win
+		FindText().Click(dealButtonX, dealButtonY, "L")
+		Sleep 3000
+	}
+	;hand is over, we lost
+	else if (ok:=FindText(X, Y, 328, 959, 723, 1067, 0, 0, gameOverBanner))
+	{
+		guiText:="Loser - starting next hand"
+		updateGui(guiText)
+		;MsgBox click to draw after loss
+		FindText().Click(dealButtonX, dealButtonY, "L")
+		Sleep 3000
+	}
+	;hand in progress - evaluate and hold
+	else if (ok:=FindText(X, Y, 369, 990, 666, 1040, 0, 0, holdCardsBanner))
+	{
+		guiText:="Evaluating hand"
+		updateGui(guiText)
+		hand:=hand()
+		Concat := ""
+		For Each, Element In hand
+			Concat .= (Concat <> "" ? ", " : "") . Element
+		
+		guiText:=Concat
+		updateGui(guiText)
+		;MsgBox, %Concat%
+		holds := evaluate(hand())
+	}
+
 }
-else if (FindText(X, Y, 11, 807, 1030, 946, 0, 0, holdBanner))
+
+updateGui(guiText)
 {
-	MsgBox click to draw made hand
-	FindText().Click(dealButtonX, dealButtonY, "L")
-}
-else if (ok:=FindText(X, Y, 558, 737, 688, 877, 0, 0, handWinBanner))
-{
-	MsgBox click to draw after win
-	FindText().Click(dealButtonX, dealButtonY, "L")
-}
-else if (ok:=FindText(X, Y, 425, 962, 614, 1035, 0, 0, gameOverBanner))
-{
-	MsgBox click to draw after loss
-	FindText().Click(dealButtonX, dealButtonY, "L")
-}
-else if (ok:=FindText(X, Y, 367, 956, 682, 1038, 0, 0, holdCardsBanner))
-{
-	MsgBox click to figure out hand
-	holds := evaluate(hand())
+	;Updates the overlay every game loop
+	Gui New
+    Gui, -Caption +AlwaysOnTop +Owner +LastFound 
+	;WinSet, TransColor, 32CD32
+	Gui, Color, 32CD32
+	Gui, Font, s20 w100 q4, Arial
+	Gui, Add, Text,, %guiText%
+	Gui, Show, x0 y0
 }
 
 evaluate(hand)
 {
-	Concat := ""
-	For Each, Element In hand
-	   Concat .= (Concat <> "" ? "`n" : "") . Element
-	MsgBox, %Concat%
-	if (hold:=rankingFour(hand))
+	if (hold:=ruleTwo(hand))
 	{
 		return hold
 	}
-	else if (hold:=rankingNine(hand))
+	else if (hold:=ruleFour(hand))
 	{
 		return hold
 	}
-	else if (hold:=rankingTwelve(hand))
+	else if (hold:=ruleSeven(hand))
 	{
 		return hold
 	}
-	else if (hold:=rankingThirteen(hand))
+	else if (hold:=ruleEight(hand))
 	{
 		return hold
 	}
-	else if (hold:=rankingFourteen(hand))
+	else if (hold:=ruleNine(hand))
 	{
 		return hold
 	}
-	else if (hold:=rankingFifteen(hand))
+	else if (hold:=ruleTen(hand))
 	{
 		return hold
 	}
-	else if (hold:=rankingSixteen(hand))
+	else if (hold:=ruleEleven(hand))
 	{
 		return hold
 	}
-	else if (hold:=rankingSeventeen(hand))
+	else if (hold:=ruleTwelve(hand))
 	{
 		return hold
 	}
-	else if (hold:=rankingEighteen(hand))
+	else if (hold:=ruleThirteen(hand))
 	{
 		return hold
 	}
-	else if (hold:=rankingNineteen(hand))
+	else if (hold:=ruleFourteen(hand))
 	{
 		return hold
 	}
-	else if (hold:=rankingTwenty(hand))
+	else if (hold:=ruleFifteen(hand))
 	{
 		return hold
 	}
-	else if (hold:=rankingTwentyOne(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingTwentyTwo(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingTwentyThree(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingTwentyFour(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingTwentyFive(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingTwentySix(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingTwentySeven(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingTwentySeven(hand))
-	{
-		return hold
-	}
-		else if (hold:=rankingTwentyEight(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingTwentyNine(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingThirty(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingThirtyOne(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingThirtyTwo(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingThirtyThree(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingThirtyFour(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingThirtyFive(hand))
-	{
-		return hold
-	}
-	else if (hold:=rankingThirtySix(hand))
+	else if (hold:=ruleSixteen(hand))
 	{
 		return hold
 	}
@@ -160,15 +136,81 @@ evaluate(hand)
 	}
 }
 
-rankingFour(hand)
+ruleTwo(hand)
 {
-	;4 to a royal flush (18.3617)
+	
 	hold:=[]
+	diamonds:=0
+	hearts:=0
+	spades:=0
+	clubs:=0
+	fourToAFlush:=False
+	hasAce:=False
+	hasKing:=False
+	hasQueen:=False
+	hasJack:=False
+	hasTen:=False
+	fourToABroadway:=False
+	For Each, Element In hand
+		IfInString, Element, "diamonds"
+		{
+			diamonds++
+		}
+		else IfInString, Element, "clubs"
+		{
+			clubs++
+		}
+		else IfInString, Element, "spades"
+		{
+			spades++
+		}
+		else IfInString, Element, "hearts"
+		{
+			hearts++
+		}
+		
+		IfInString, Element, "ace"
+		{
+			hasAce:=True
+		}
+		else IfInString, Element, "king"
+		{
+			hasKing:=True
+		}
+		else IfInString, Element, "queen"
+		{
+			hasQueen:=True
+		}
+		else IfInString, Element, "jack"
+		{
+			hasJack:=True
+		}
+		else IfInString, Element, "ten"
+		{
+			hasTen:=True
+		}
+	if(diamonds=4 or clubs=4 or hearts=4 or spades=4)
+	{
+		fourToAFlush:=True
+	}
+	if(hasAce+hasKing+hasQueen+hasJack+hasTen=4)
+	{
+		fourToABroadway:=True
+	}
+	
+	
+	
+	
+	;4 to a royal flush (18.3617)
+	if(fourToABroadway and fourToAFlush)
+	{
+		
+	}
 	
 	return hold
 }
 
-rankingNine(hand)
+ruleFour(hand)
 {
 	;4 to a straight flush (3.5319)
 	hold:=[]
@@ -176,7 +218,7 @@ rankingNine(hand)
 	return hold
 }
 
-rankingTwelve(hand)
+ruleSeven(hand)
 {
 	;3 to a royal flush (1.2868) A
 	hold:=[]
@@ -184,7 +226,7 @@ rankingTwelve(hand)
 	return hold
 }
 
-rankingThirteen(hand)
+ruleEight(hand)
 {
 	;4 to a flush (1.2766)
 	hold:=[]
@@ -192,15 +234,7 @@ rankingThirteen(hand)
 	return hold
 }
 
-rankingFourteen(hand)
-{
-	;Unsuited TJQK(0.8723)
-	hold:=[]
-	
-	return hold
-}
-
-rankingFifteen(hand)
+ruleNine(hand)
 {
 	;Low pair (0.8237)
 	hold:=[]
@@ -208,175 +242,61 @@ rankingFifteen(hand)
 	return hold
 }
 
-rankingSixteen(hand)
+ruleTen(hand)
 {
-	;4 to an outside straight with 0-2 high cards(0.6809)
+	;4 to an outside straight
 	hold:=[]
 	
 	return hold
 }
 
-rankingSeventeen(hand)
+ruleEleven(hand)
 {
-	;3 to a straight flush (type 1) (0.6207 to 0.6429)
+	;2 suited high cards
 	hold:=[]
 	
 	return hold
 }
 
-rankingEighteen(hand)
+ruleTwelve(hand)
 {
-	;Suited QJ (0.6004)B
+	;3 to a straight flush
 	hold:=[]
 	
 	return hold
 }
 
-rankingNineteen(hand)
+ruleThirteen(hand)
 {
-	;4 to an inside straight, 4 high cards (0.5957)
+	;2 unsuited high cards
 	hold:=[]
 	
 	return hold
 }
 
-rankingTwenty(hand)
+ruleFourteen(hand)
 {
-	;Suited KQ or KJ (0.5821)
+	;Suited T/J, T/Q, T/K
 	hold:=[]
 	
 	return hold
 }
 
-rankingTwentyOne(hand)
+ruleFifteen(hand)
 {
-	;Suited AK, AQ, or AJ (0.5678)
+	;one high card
 	hold:=[]
 	
 	return hold
 }
 
-rankingTwentyTwo(hand)
+ruleSixteen(hand)
 {
-	;4 to an inside straight, 3 high cards (0.5319)
+	;discard all
 	hold:=[]
 	
 	return hold
 }
-
-rankingTwentyThree(hand)
-{
-	;3 to a straight flush (type 2) (0.5227 to 0.5097)C
-	hold:=[]
-	
-	return hold
-}
-
-rankingTwentyFour(hand)
-{
-	;Unsuited JQK (0.5005)
-	hold:=[]
-	
-	return hold
-}
-
-rankingTwentyFive(hand)
-{
-	;Unsuited JQ (0.4980)
-	hold:=[]
-	
-	return hold
-}
-
-rankingTwentySix(hand)
-{
-	;Suited TJ (0.4968) D
-	hold:=[]
-	
-	return hold
-}
-
-rankingTwentySeven(hand)
-{
-	;2 unsuited high cards king highest (0.4862)
-	hold:=[]
-	
-	return hold
-}
-
-rankingTwentyEight(hand)
-{
-	;Suited TQ (0.4825) E
-	hold:=[]
-	
-	return hold
-}
-
-rankingTwentyNine(hand)
-{
-	;2 unsuited high cards ace highest (0.4743)
-	hold:=[]
-	
-	return hold
-}
-
-rankingThirty(hand)
-{
-	;J only (0.4713)
-	hold:=[]
-	
-	return hold
-}
-
-rankingThirtyOne(hand)
-{
-	;Suited TK (0.4682) F
-	hold:=[]
-	
-	return hold
-}
-
-rankingThirtyTwo(hand)
-{
-	;Q only (0.4681)
-	hold:=[]
-	
-	return hold
-}
-
-rankingThirtyThree(hand)
-{
-	;K only (0.4649)
-	hold:=[]
-	
-	return hold
-}
-
-rankingThirtyFour(hand)
-{
-	;A only (0.4640)
-	hold:=[]
-	
-	return hold
-}
-
-rankingThirtyFive(hand)
-{
-	;3 to a straight flush (type 3) (0.4431)
-	hold:=[]
-	
-	return hold
-}
-
-rankingThirtySix(hand)
-{
-	;Garbage, discard everything (0.3597)
-	hold:=[]
-	
-	return hold
-}
-
-
 
 hand()
 {
@@ -452,22 +372,22 @@ hand()
 		;MsgBox, % "card 1: " value.key
 		hand["card1"]:= value.key
 	  }
-	  else if (FindText(card2x, card2y, 229, 681, 297, 787, 0, 0, value.value))
+	  else if (FindText(card2x, card2y, 220, 690, 409, 939, 0, 0, value.value))
 	  {
 		;MsgBox, % "card 2: " value.key
 		hand["card2"]:= value.key
 	  }
-	  else if (FindText(card3x, card3y, 428, 678, 505, 776, 0, 0, value.value))
+	  else if (FindText(card3x, card3y, 428, 683, 607, 941, 0, 0, value.value))
 	  {
 		;MsgBox, % "card 3: " value.key
 		hand["card3"]:= value.key
 	  }
-	  else if (FindText(card4x, card4y, 620, 665, 722, 779, 0, 0, value.value))
+	  else if (FindText(card4x, card4y, 622, 687, 824, 946, 0, 0, value.value))
 	  {
 		;MsgBox, % "card 4: " value.key
 		hand["card4"]:= value.key
 	  }
-	  else if (FindText(card5x, card5y, 845, 681, 907, 782, 0, 0, value.value))
+	  else if (FindText(card5x, card5y, 838, 679, 1024, 947, 0, 0, value.value))
 	  {
 		;MsgBox, % "card 5: " value.key
 		hand["card5"]:= value.key
